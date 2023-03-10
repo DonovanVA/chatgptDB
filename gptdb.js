@@ -14,8 +14,8 @@ const url = 'https://api.openai.com/v1/chat/completions';
 2. Piece:  What is the nutritional content for cooked chinese sausage per piece? List me the exact calories, protein, carbohydrates and fats in g, try to give me a value as I need it
 */
 const data = {
-  "model": "text-davinci-003",
-  "messages": [{"role": "user", "content": "What is the nutritional content for cooked chinese sausage per 100g? List me the exact calories, protein, carbohydrates and fats in g, try to give me a value as I need it"}],
+  "model": "gpt-3.5-turbo",
+  "messages": [{"role": "user", "content": "What is the nutritional content for cooked chinese sausage per 100g? List me the exact calories, protein, carbohydrates and fats in g, try to give me an exact value"}],
   "temperature": 0.7
 };
 
@@ -43,20 +43,22 @@ const stringMatchNutrition =(message)=>{
   //2. Find the values
   const caloriesnextWhitespace = caloriesPos + message.slice(caloriesPos).search(/\s/);
   const caloriesvalue = message.slice(caloriesnextWhitespace+1).split("\n")
-  console.log(parseInt(caloriesvalue))
+  console.log(parseFloat(caloriesvalue))
 
   const proteinnextWhitespace = proteinPos + message.slice(proteinPos).search(/\s/);
   const proteinvalue = message.slice(proteinnextWhitespace+1).split("\n")
-  console.log(parseInt(proteinvalue))
+  console.log(parseFloat(proteinvalue))
 
   const carbsnextWhitespace = carbPos + message.slice(carbPos).search(/\s/);
   const carbsvalue = message.slice(carbsnextWhitespace+1).split("\n")
-  console.log(parseInt(carbsvalue))
+  console.log(parseFloat(carbsvalue))
 
   const fatsnextWhitespace = fatsPos + message.slice(fatsPos).search(/\s/);
   const fatsvalue = message.slice(fatsnextWhitespace+1).split("\n")
-  console.log(parseInt(fatsvalue))
-
+  console.log(parseFloat(fatsvalue))
+  //NaN check for strings => can be used to check if prompt again
+  isNaN(parseFloat("dwdwdw")) && console.log(parseFloat("dwdwdwd"))
+ 
 }
 
 
@@ -73,6 +75,7 @@ fetch(request)
   })
   .then(data => {
     console.log(stringMatchNutrition(data.choices[0].message.content));
+    console.log(data.choices[0].message.content)
   })
   .catch(error => {
     console.error('There was a problem with the fetch:', error);
