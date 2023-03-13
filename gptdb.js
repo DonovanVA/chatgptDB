@@ -180,7 +180,7 @@ fetch(request)
     return response.json();
   })
   .then(data => {
-    console.log(stringMatchNutrition(data.choices[0].message.content));
+    console.log(stringMatchNutrition(data.choices[0].message.content)); //data.choices[0].message.content is the message content
     console.log(data.choices[0].message.content)
   })
   .catch(error => {
