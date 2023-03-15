@@ -7,7 +7,7 @@ ChatGPT-powered Knowledge base (use case: nutritional database)
 
 import dotenv from "dotenv";
 dotenv.config();
-
+import fetch, {Headers,Request} from 'node-fetch'
 /* Other prompts: 
 1. Serving: What is the nutritional content for cooked chinese sausage per serving? List me the exact calories, protein, carbohydrates and fats in g, try to give me a value as I need it
 2. Piece:  What is the nutritional content for cooked chinese sausage per piece? List me the exact calories, protein, carbohydrates and fats in g, try to give me a value as I need it
@@ -149,9 +149,9 @@ stringMatchNutrition(test_case_4);
 // (real implementation) Send the request and handle the response
 /*
 const qn1 =
-  "could you give me the general nutritional content for cooked chinese sausage per 100g? List me the exact calories, protein, carbohydrates and fat in g, if possible, in bullet point form";
+  "could you give me the general nutritional content for cooked chinese sausage per 100g? List me the exact calories, protein, carbohydrates and fat in g if possible, in bullet point form";
 const qn2 =
-  "could you give me the general nutritional content for cooked char kway teow per 100g? List me the exact calories, protein, carbohydrates and fat in g, if possible, in bullet point form ";
+  "could you give me the general nutritional content for cooked char kway teow per 100g? List me the exact calories, protein, carbohydrates and fat in g if possible, in bullet point form ";
 
 const url = "https://api.openai.com/v1/chat/completions";
 const key = process.env.OPENAI_KEY;
@@ -186,7 +186,6 @@ fetch(request)
   .catch(error => {
     console.error('There was a problem with the fetch:', error);
   });
-
-
-
 */
+
+

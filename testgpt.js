@@ -3,6 +3,7 @@
 
 import dotenv from "dotenv";
 dotenv.config();
+import fetch, {Headers,Request} from 'node-fetch'
 // input your qn here
 const qn1 =
   "could you give me the general nutritional content for cooked chinese sausage per 100g? List me the exact calories, protein, carbohydrates and fat in g, if possible, in bullet point form";
